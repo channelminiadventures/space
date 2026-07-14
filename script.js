@@ -16,17 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
     
     const particles = [];
-    // Adjust number of particles based on screen size
-    const numParticles = Math.floor(window.innerWidth / 50); 
+    // Adjust number of particles based on screen size (increased density)
+    const numParticles = Math.floor(window.innerWidth / 30); 
     
     for (let i = 0; i < numParticles; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 2 + 1,
+            size: Math.random() * 2.5 + 1.5, // Slightly larger
             speedX: Math.random() * 0.5 - 0.25,
             speedY: Math.random() * -0.5 - 0.2,
-            opacity: Math.random() * 0.5 + 0.1
+            opacity: Math.random() * 0.6 + 0.3 // More opaque
         });
     }
     

@@ -325,7 +325,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2; /* Ensure particles are over the focused video and gradient */
+    z-index: 5; /* Increased from 2 to 5 to be absolutely sure */
     pointer-events: none;
 }
 
