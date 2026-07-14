@@ -33,10 +33,11 @@ body, html {
 .bg-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 0%;
-    transform: scale(2.2); /* Zoom in more to guarantee island is pushed off screen */
-    transform-origin: top center; /* Zoom relative to the top so the sky stays */
+    background-image: url('bg_sky.png');
+    background-size: 100% auto; /* Mantém a proporção sem dar zoom excessivo */
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #000000;
     filter: blur(10px) brightness(0.6); /* Desfocado e escuro como pedido */
 }
 
