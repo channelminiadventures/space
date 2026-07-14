@@ -34,8 +34,9 @@ body, html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.05); /* hide edges for blur */
-    filter: blur(10px) brightness(0.7);
+    object-position: 75% center; /* Shift the center (island) to the left side */
+    transform: scale(1.1); /* hide edges */
+    filter: brightness(0.85); /* Focado e ligeiramente escurecido para contraste */
     animation: slowZoom 30s infinite alternate linear;
 }
 
@@ -47,8 +48,8 @@ body, html {
 }
 
 @keyframes slowZoom {
-    0% { transform: scale(1.05); }
-    100% { transform: scale(1.15); }
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1.2); }
 }
 
 /* Entrance Overlay */
@@ -317,6 +318,13 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 2; /* Ensure particles are over the focused video and gradient */
     pointer-events: none;
+}
+
+/* Media Query for mobile to ensure the island isn't completely lost */
+@media (max-width: 768px) {
+    .bg-image {
+        object-position: 65% center;
+    }
 }
