@@ -316,10 +316,9 @@ footer {
 .floating-island {
     position: absolute;
     right: 100%; /* Stick to the left edge of the card */
-    margin-right: -30px; /* Slight overlap into the card, touching the video edge */
-    top: 55%;
-    transform: translateY(-50%);
-    width: 600px; /* Size fitting the red box */
+    margin-right: -20px; /* Slight overlap into the card */
+    bottom: -350px; /* Push down to crop at the bottom */
+    width: 1050px; /* Massive size to crop on the left side */
     z-index: 20; /* In front of the menu card contents */
     pointer-events: none;
     animation: floatIsland 6s ease-in-out infinite;
@@ -327,8 +326,8 @@ footer {
 }
 
 @keyframes floatIsland {
-    0%, 100% { transform: translateY(-50%) rotate(0deg); }
-    50% { transform: translateY(-53%) rotate(2deg); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(1.5deg); }
 }
 
 @media (max-width: 1200px) {
