@@ -1,11 +1,11 @@
 :root {
-    --primary: #8a2be2; /* deep purple */
-    --secondary: #ff69b4; /* hot pink */
+    --primary: #000000; /* black */
+    --secondary: #00e5ff; /* cyan */
     --kofi: #ff5e5b;
-    --glass-bg: rgba(20, 20, 30, 0.45);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(5, 5, 5, 0.85); /* darker glass */
+    --glass-border: rgba(0, 229, 255, 0.2); /* cyan glow */
     --text-main: #ffffff;
-    --text-muted: #b0b0c0;
+    --text-muted: #8892b0;
 }
 
 * {
@@ -19,7 +19,7 @@ body, html {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    background-color: #0f0f13;
+    background-color: #000000;
     color: var(--text-main);
 }
 
@@ -97,21 +97,23 @@ body, html {
 }
 
 .magic-btn {
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    border: none;
+    background: transparent;
+    border: 2px solid var(--secondary);
     padding: 15px 40px;
     border-radius: 50px;
-    color: white;
+    color: var(--secondary);
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    transition: all 0.3s;
 }
 
 .magic-btn:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 25px rgba(255, 105, 180, 0.4);
+    background: var(--secondary);
+    color: black;
+    box-shadow: 0 15px 25px rgba(0, 229, 255, 0.4);
 }
 
 /* Main Content */
@@ -172,7 +174,7 @@ main.hidden {
     position: absolute;
     top: -5px; left: -5px; right: -5px; bottom: -5px;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background: linear-gradient(45deg, transparent, var(--secondary));
     z-index: 1;
     animation: slowPulse 3s infinite alternate;
 }
