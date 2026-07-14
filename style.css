@@ -38,7 +38,9 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-color: #000000;
-    filter: blur(10px) brightness(0.6); /* Desfocado e escuro como pedido */
+    /* Pós-produção: Desfoque, brilho, contraste, saturação e leve tom cinematográfico roxo/azulado */
+    filter: blur(12px) brightness(0.55) contrast(1.2) saturate(1.3) sepia(0.1) hue-rotate(-5deg);
+    animation: slowZoom 30s infinite alternate linear;
 }
 
 .bg-overlay {
