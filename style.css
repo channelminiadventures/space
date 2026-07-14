@@ -28,16 +28,7 @@ body, html {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: 0;
-}
 
-.bg-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.05); /* hide edges for blur */
-    filter: blur(10px) brightness(0.7);
-    animation: slowZoom 30s infinite alternate linear;
-}
 
 .bg-overlay {
     position: fixed;
@@ -324,14 +315,14 @@ footer {
 
 .floating-island {
     position: absolute;
-    left: -320px; /* Adjust so it sits on the side, slightly overlapping */
+    left: -550px; /* Pushed further to the side */
     top: 50%;
     transform: translateY(-50%);
-    width: 380px; /* Nice big island */
+    width: 750px; /* Made very large */
     z-index: 20; /* In front of the menu card contents */
     pointer-events: none;
     animation: floatIsland 6s ease-in-out infinite;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 20px 40px rgba(0,229,255,0.15)); /* slight cyan glow/shadow */
 }
 
 @keyframes floatIsland {
