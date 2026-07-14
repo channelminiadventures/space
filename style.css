@@ -330,8 +330,25 @@ footer {
     50% { transform: translateY(-25px) rotate(1.5deg); }
 }
 
+.floating-island-2 {
+    position: absolute;
+    left: 100%; /* Stick to the right edge of the card */
+    margin-left: -60px; /* Overlap behind the card slightly */
+    top: -20px; /* Near the top right corner */
+    width: 380px; /* Smaller size */
+    z-index: -1; /* Behind the menu card contents and glass */
+    pointer-events: none;
+    animation: floatIsland2 8s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(0,229,255,0.1)) brightness(0.9);
+}
+
+@keyframes floatIsland2 {
+    0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); }
+    50% { transform: scaleX(-1) translateY(-15px) rotate(-1.5deg); }
+}
+
 @media (max-width: 1200px) {
-    .floating-island {
-        display: none !important; /* Totalmente removida na versão mobile/telas menores */
+    .floating-island, .floating-island-2 {
+        display: none !important; /* Totalmente removidas na versão mobile/telas menores */
     }
 }
