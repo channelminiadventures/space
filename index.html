@@ -15,27 +15,22 @@
 <body>
     <!-- Fullscreen Background -->
     <div class="bg-container">
-        <img src="bg.png" alt="Mini Adventures Island" class="bg-image">
+        <video autoplay loop muted playsinline id="bg-video" class="bg-image">
+            <source src="ilha_bg.webm" type="video/webm">
+        </video>
+        <canvas id="particles-canvas"></canvas>
         <div class="bg-overlay"></div>
     </div>
 
-    <!-- Entrance Overlay (For Autoplay Bypass) -->
-    <div id="entrance-overlay" class="entrance-overlay">
-        <div class="entrance-content">
-            <i class="fa-solid fa-headphones-simple entrance-icon"></i>
-            <h1>Welcome to the Island</h1>
-            <p>Put your headphones on.</p>
-            <button id="enter-btn" class="magic-btn">Enter & Play Radio</button>
-        </div>
-    </div>
+
 
     <!-- Main Content -->
-    <main id="main-content" class="hidden">
+    <main id="main-content">
         <div class="glass-card">
             <!-- Header -->
             <header class="profile-header">
                 <div class="avatar-container">
-                    <img src="bg.png" alt="Avatar" class="avatar">
+                    <img src="capa-face.png" alt="Avatar" class="avatar">
                     <div class="pulse-ring"></div>
                 </div>
                 <h2>Mini Adventures</h2>
@@ -44,7 +39,7 @@
 
             <!-- YouTube Radio Embedded -->
             <div class="video-wrapper">
-                <div id="youtube-player"></div>
+                <iframe id="youtube-player" src="https://www.youtube.com/embed/live_stream?channel=UC_SEU_ID_DE_CANAL_AQUI&autoplay=1&mute=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
             </div>
 
             <!-- Links -->
@@ -77,8 +72,6 @@
         </div>
     </main>
 
-    <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 </body>
 </html>

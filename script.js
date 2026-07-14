@@ -1,57 +1,58 @@
-// YouTube Video ID (Para ser trocado futuramente pelo ID do Lofi do canal)
-// Utilizando um placeholder amigável temporário até que tenha a live oficial.
-const YOUTUBE_VIDEO_ID = "jfKfPfyJRdk"; // Lofi Girl fallback ID
-
-let player;
-
-// Esta função é chamada automaticamente quando a API do YouTube carrega
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-        height: '100%',
-        width: '100%',
-        videoId: YOUTUBE_VIDEO_ID,
-        playerVars: {
-            'autoplay': 0,
-            'controls': 0, // hide controls
-            'disablekb': 1,
-            'fs': 0,
-            'loop': 1,
-            'modestbranding': 1,
-            'rel': 0,
-            'showinfo': 0,
-            'playlist': YOUTUBE_VIDEO_ID // required for infinite loop
-        },
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
-
-function onPlayerReady(event) {
-    console.log("Radio pronta. Aguardando interação do usuário para bypass de autoplay.");
-}
-
+// ==========================================
+// PARTICLE ENGINE (Dust / Stars)
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    const enterBtn = document.getElementById('enter-btn');
-    const overlay = document.getElementById('entrance-overlay');
-    const mainContent = document.getElementById('main-content');
-
-    enterBtn.addEventListener('click', () => {
-        // Toca o som de fato (bypass da política do Google/Apple)
-        if (player && typeof player.playVideo === 'function') {
-            player.playVideo();
-            player.setVolume(50); // Volume agradável inicial
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    // Resize canvas to fill the background
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    const particles = [];
+    // Adjust number of particles based on screen size
+    const numParticles = Math.floor(window.innerWidth / 50); 
+    
+    for (let i = 0; i < numParticles; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speedX: Math.random() * 0.5 - 0.25,
+            speedY: Math.random() * -0.5 - 0.2,
+            opacity: Math.random() * 0.5 + 0.1
+        });
+    }
+    
+    function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+            let p = particles[i];
+            ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+            
+            p.x += p.speedX;
+            p.y += p.speedY;
+            
+            // Wrap around top -> bottom
+            if (p.y < 0) {
+                p.y = canvas.height;
+                p.x = Math.random() * canvas.width;
+            }
+            // Wrap around horizontal edges
+            if (p.x < 0) p.x = canvas.width;
+            if (p.x > canvas.width) p.x = 0;
         }
-
-        // Fade out
-        overlay.classList.add('fade-out');
-        
-        // Revela o Glass Card do Linktree
-        mainContent.classList.remove('hidden');
-
-        // Destrói o overlay da memória
-        setTimeout(() => {
-            overlay.remove();
-        }, 800);
-    });
+        requestAnimationFrame(drawParticles);
+    }
+    
+    drawParticles();
 });
